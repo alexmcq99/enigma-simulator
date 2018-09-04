@@ -25,9 +25,6 @@ public class EnigmaSimulator {
                 sc.useDelimiter("\\Z");
                 input = sc.next();
 
-                //remove non alphabetical characters
-                input.replaceAll("[^A-Za-z]+", "");
-
                 i += 2;
             } else if (args[i].equals("-outputfile")) {
                 //check if there is a valid argument following this flag
@@ -45,26 +42,26 @@ public class EnigmaSimulator {
 
                 input = args[i + 1];
                 i += 2;
-            } else if (args[i].equals("-r1")) {
+            } else if (args[i].equals("-rightrotor")) {
                 //check if there is a valid argument following this flag
                 if (i + 1 == args.length || i + 2 == args.length || args[i + 1].charAt(0) == '-' || args[i + 2].charAt(0) == '-') {
-                    throw new IllegalArgumentException("You must include a rotor number and a starting position (letter) after the flag \"-r1\"");
+                    throw new IllegalArgumentException("You must include a rotor number and a starting position (letter) after the flag \"-rightrotor\"");
                 }
 
                 right = new Rotor(Integer.parseInt(args[i + 1]), args[i + 2].charAt(0));
                 i += 3;
-            } else if (args[i].equals("-r2")) {
+            } else if (args[i].equals("-midrotor")) {
                 //check if there is a valid argument following this flag
                 if (i + 1 == args.length || i + 2 == args.length || args[i + 1].charAt(0) == '-' || args[i + 2].charAt(0) == '-') {
-                    throw new IllegalArgumentException("You must include a rotor number and a starting position (letter) after the flag \"-r2\"");
+                    throw new IllegalArgumentException("You must include a rotor number and a starting position (letter) after the flag \"-midrotor\"");
                 }
 
                 mid = new Rotor(Integer.parseInt(args[i + 1]), args[i + 2].charAt(0));
                 i += 3;
-            } else if (args[i].equals("-r3")) {
+            } else if (args[i].equals("-leftrotor")) {
                 //check if there is a valid argument following this flag
                 if (i + 1 == args.length || i + 2 == args.length || args[i + 1].charAt(0) == '-' || args[i + 2].charAt(0) == '-') {
-                    throw new IllegalArgumentException("You must include a rotor number and a starting position (letter) after the flag \"-r3\"");
+                    throw new IllegalArgumentException("You must include a rotor number and a starting position (letter) after the flag \"-leftrotor\"");
                 }
 
                 left = new Rotor(Integer.parseInt(args[i + 1]), args[i + 2].charAt(0));
@@ -101,6 +98,10 @@ public class EnigmaSimulator {
         if (input.equals("")) {
             throw new IllegalArgumentException("You did not specify a file or String for your input.");
         }
+
+        //remove non alphabetical characters
+        input.replaceAll("[^A-Za-z]+", "");
+	input = input.toUpperCase();
 
         Enigma machine = new Enigma(p, right, mid, left, ref);
         String encrypted = machine.encryptStr(input);
