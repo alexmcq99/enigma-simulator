@@ -8,12 +8,19 @@ files are already included, so compilation is not necessary.
 
 Arguments:
 -inputfile [path to input file] --> Argument containing the path to a file containing the input for the enigma machine.  This argument can be omitted and replaced with the -string [input string] argument.
+
 -string [input string] --> Argument containing the string to be encrypted by Enigma.  This argument can be omitted and replaced with the -inputfile [path to input file] argument, but one of them must be present.
+
 -outputfile [path to output file] --> Optional argument containing the path to a file where the output of Enigma will be written.  If this argument is omitted, the output will simply be printed to the screen.
+
 -leftrotor [rotor number] [starting position] --> Optional argument containing the rotor number and starting position of the leftmost (slowest) rotor.  The rotor number can be 1-5, and the starting position can be A-Z (must be a capital letter).  If this argument is omitted, the leftmost rotor will default to rotor #1 with starting position A.
+
 -midrotor [rotor number] [starting position] --> Optional argument containing the rotor number and starting position of the middle (double stepping) rotor.  The rotor number can be 1-5, and the starting position can be A-Z (must be a capital letter).  If this argument is omitted, the middle rotor will default to rotor #2 with starting position A.
+
 -rightrotor [rotor number] [starting position] --> Optional argument containing the rotor number and starting position of the rightmost (fastest) rotor.  The rotor number can be 1-5, and the starting position can be A-Z (must be a capital letter).  If this argument is omitted, the leftmost rotor will default to rotor #3 with starting position A.
+
 -reflector [reflector letter] --> Optional argument containing the reflector letter, either A, B, or C.  If omitted, the reflector will default to B.
+
 -plugboard [letter swap string] --> Optional argument containing a string of letters to swap with the plugboard.  The letter must be upper case, and each pair of letters in the string will be swapped in the plugboard.  Each letter not specified will be routed to itself.  If this argument is omitted, then the plugboard will simply route each letter to itself.
 
 Examples:
